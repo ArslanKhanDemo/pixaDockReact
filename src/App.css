@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+.custom-height-container {
+  height: 500px; /* Replace with your desired height */
+}
