@@ -26,25 +26,22 @@ function Login(props) {
             });
 
             if (response.ok) {
-                console.log('Login successful: ', response);
                 // Successful login, perform further actions (e.g., redirect, update state)
-                let data = await response.json();
                 setIsLoading(false);
                 props.setAlert(null);
+                let data = await response.json();
                 setData(data);
-                console.log('Login successful: ', data.result.result.token);
-                console.log('Login successful: ', typeof data.result.result);
                 props.setLogout(true);
-                window.localStorage.setItem("userID",data.result.result.userID);
-                window.localStorage.setItem("token",data.result.result.token);
-                window.localStorage.setItem("role",data.result.result.role);
-                props.showAlert("success", "Success", "Authorized User");
-                
+                window.localStorage.setItem("userID", data.result.result.userID);
+                window.localStorage.setItem("token", data.result.result.token);
+                window.localStorage.setItem("role", data.result.result.role);
+
                 // window.localStorage.UserData.userID = data.result.result.userID;
                 // window.localStorage.UserData.role = data.result.result.role;
-                console.log(window.localStorage);
+                //console.log(window.localStorage);
                 navigate('/');
-            } if(response.ok === false) {
+                props.showAlert("success", "Success", "Authorized User");
+            } if (response.ok === false) {
                 // Handle failed login (e.g., display error message)
                 //setIsLoading(false);
                 props.setAlert(null);
@@ -52,13 +49,19 @@ function Login(props) {
                 props.showAlert("danger", "Failed", "Authentication Error");
             }
         } catch (error) {
-            console.error("Error: ",error);
+            console.error("Error: ", error);
         }
+
     };
+    const SignUp = () => {
+        console.log("SignUp CALLED");
+        navigate("/signup");
+
+    }
 
     return (
         <>
-            <div className="container mt-5 mb-5">
+            <div className="container mt-5 mb-5 ">
                 <div className="row justify-content-center">
                     <div className="col-md-6">
                         <div className="card">
@@ -66,33 +69,59 @@ function Login(props) {
                                 <h5 className="card-title display-1 text-center mb-3">Login</h5>
                                 <form onSubmit={handleLogin}>
                                     <div className="form-group">
-                                        <label className="fs-5"htmlFor="email">Email</label>
+                                        <br />
                                         <input
+                                            placeholder='Email'
                                             type="text"
                                             className="form-control"
                                             id="email"
                                             value={email}
                                             onChange={(e) => setEmail(e.target.value)}
+                                            required
                                         />
                                     </div>
                                     <div className="form-group">
-                                        <label className="fs-5" htmlFor="password">Password</label>
+                                        <br />
                                         <input
+                                            placeholder='Password'
                                             type="password"
                                             className="form-control"
                                             id="password"
                                             value={password}
                                             onChange={(e) => setPassword(e.target.value)}
+                                            required
                                         />
                                     </div>
                                     <br />
-                                    <button type="submit" className="btn btn-primary">Login</button>
+                                    <div className="container">
+                                        <div className="row">
+                                            <div className='col'>
+                                                <button type="submit" className="btn btn-primary ">Login</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
                                 </form>
+                                <br />
+                                <div className="container">
+                                    <div className="col">
+                                        <button onClick={SignUp} className="btn btn-success col d-flex justify-content-end">SignUp</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
         </>
     );
 }

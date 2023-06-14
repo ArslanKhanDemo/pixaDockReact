@@ -42,17 +42,16 @@ function Blogs(props) {
             <div className="container fullscreen mb-5">
                 <h1 className="display-1">Blogs</h1>
             </div>
-            <br />
-            <br />
-            <div>
+
+            <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 grid-gutter-width: 1.5rem">
                 {data.map((item, index) => (
                     <>
-                        <div className="container">
+                        {/* <div className="container">
                             <div className="row">
-                                <div className="col-md-10">
-                                    <div className="card mb-4">
-                                        <img src={`../uploads/${item.image}`} alt="Blog Image 1" className="img-fluid card-img-top blog-image" />
+                                <div className="col-md-9">
+                                    <div className="card mb-7">
                                         <div className="card-body">
+                                            <img src={`../uploads/${item.image}`} alt="Blog Image 1" class="img-thumbnail max-width: 20% " />
                                             <h5 className="card-title" key={index}>{item.heading}</h5>
                                             <p className="card-text"key={index}>{item.content}</p>
                                             <a href="C:\Users\DELL\Desktop\HomeLogo" className="btn btn-primary">Read More</a>
@@ -61,7 +60,27 @@ function Blogs(props) {
                                 </div>
                             </div>
                         </div>
-                        <br />
+                        <br /> */}
+                        <div class="container " >
+                            <div>
+                                <div class="col">
+                                    <div class="p-3 border">
+                                            <img src={`../uploads/${item.image}`} alt="Blog Image 1" className="img-thumbnail" />
+                                            <h5 className="card-title" key={index}>{item.heading}</h5>
+                                            <textarea name="" id="" cols="auto" rows="auto">{item.content}</textarea>
+                                            <a className="btn btn-primary">Add to Cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {/* <div className="card">
+                                <div className="card-body">
+                                    <img src={`../uploads/${item.image}`} className="card-img-top width-50px" alt="Image Alt Text"/>
+                                    <h5 className="card-title">{item.heading}</h5>
+                                    <p className="card-text">Card content goes here.</p>
+                                </div>
+                        </div> */}
+
                     </>
                 ))}
             </div>

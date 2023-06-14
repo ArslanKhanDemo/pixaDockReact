@@ -9,6 +9,7 @@ import Blogs from './components/Blogs';
 import Footer from './components/Footer';
 import Login from './components/Login';
 import PageNotFound from './components/PageNotFound';
+import SignUp from './components/SignUp';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
@@ -28,7 +29,7 @@ function App() {
     setTimeout(() => {
       setAlert(null);
       document.title = "React App"
-    }, 2000)
+    }, 3000)
   }
 
 
@@ -44,6 +45,7 @@ function App() {
         <Route exact path="/login" element={<Login showAlert={showAlert} setAlert={setAlert} setLogout={setLogout}/>} />
         <Route exact path="/about" element={<About showAlert={showAlert} setAlert={setAlert} />} />
         <Route exact path="/text" element={<TextArea showAlert={showAlert} />} />
+        <Route exact path="/signup" element={<SignUp showAlert={showAlert} setAlert={setAlert} />} />
         <Route exact path="/blogs" element={<Blogs showAlert={showAlert} setAlert={setAlert} />} />
         <Route path="*" element={<PageNotFound />} />
 

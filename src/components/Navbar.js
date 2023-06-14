@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types'
 import { Link, useNavigate } from "react-router-dom"
+import Alert from './Alert';
 //import { useNavigate } from "react-router-dom"
+
 
 
 export default function Navbar(props) {
@@ -18,11 +20,11 @@ export default function Navbar(props) {
                 }
             });
             const data = await response.json();
-            console.log("Data From Logout:", data);
+            //console.log("Data From Logout:", data);
             window.localStorage.removeItem("userID");
             window.localStorage.removeItem("token");
             window.localStorage.removeItem("role");
-            console.log(window.localStorage);
+            //console.log(window.localStorage);
             props.setLogout(false);
             Navigate("/login");
 
@@ -32,7 +34,7 @@ export default function Navbar(props) {
     }
     return (
         <>
-            <nav className=" navbar navbar-expand-lg bg-body-tertiary container-fluid text-center p-3 bg-secondary-subtle">
+            <nav className="fixed-top navbar navbar-expand-lg bg-body-tertiary bg-secondary-subtle">
                 <div className="container-fluid">
 
                     <button className="navbar-toggler bg-light"
@@ -46,7 +48,7 @@ export default function Navbar(props) {
                     </button>
 
                     <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-                        <Link className="navbar-brand" aria-current="page" to="/">Home</Link>
+                        <Link className="navbar-brand" aria-current="page" to="/">PixaDock</Link>
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
                                 <Link className="nav-link active" to="/blogs" >BLOGS</Link>
@@ -64,14 +66,17 @@ export default function Navbar(props) {
 
                     </div>
                 </div>
-                <div className="container-sm w-50">
-                    <form className="d-flex w-50" role="search">
+               <br />
+                <div className="container">
+                    {/* <form className="d-flex w-50" role="search">
                         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                         <button className="btn btn-outline-success" type="submit">Search</button>
-                    </form>
+                    </form> */}
                     {window.localStorage.token ? <button className="btn btn-outline-success" onClick={Logout} type="submit">Logout</button> : <></>}
                 </div>
             </nav>
+            <br />
+            <br />
         </>
     )
 }

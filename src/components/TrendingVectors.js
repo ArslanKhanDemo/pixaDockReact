@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from "react-router-dom"
 
 function TrendingVectors(props) {
     const [data, setData] = useState([]); // Initialize as an empty array
@@ -67,7 +68,11 @@ function TrendingVectors(props) {
                                 <div className="row-md-10" key={index}>
                                     <div className="card mb-4" key={index}>
                                         <div className="card-body" key={index}>
-                                            <h5 className="card-title" key={index}>{item._id}, {index}</h5>
+                                            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                                                <li className="nav-item">
+                                                    <Link className="nav-link active" to="/blogs" >{item._id}</Link>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
