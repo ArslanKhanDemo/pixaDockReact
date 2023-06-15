@@ -37,7 +37,7 @@ function SignUp(props) {
         }
         try {
             console.log("termAndConditions:",termAndConditions);
-            const response = await fetch('http://localhost:5000/api/admin/registration', {
+            const response = await fetch('http://localhost:5000/api/user/registration', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -25,29 +25,54 @@ function Login(props) {
                 body: JSON.stringify({ email, password })
             });
 
-            if (response.ok) {
+            if (response.ok === true || response.ok === true) {
                 // Successful login, perform further actions (e.g., redirect, update state)
                 setIsLoading(false);
                 props.setAlert(null);
                 let data = await response.json();
-                setData(data);
-                props.setLogout(true);
-                window.localStorage.setItem("userID", data.result.result.userID);
-                window.localStorage.setItem("token", data.result.result.token);
-                window.localStorage.setItem("role", data.result.result.role);
+                console.log(data);
+                if (data.result.hasOwnProperty("token")) {
+                    console.log("TOKEN: ", data.result.hasOwnProperty("token"));
+                    console.log("ERROR: ", data.result.hasOwnProperty("error"));
+                    console.log("Login");
+                    setData(data);
+                    props.setLogout(true);
+                    window.localStorage.setItem("userID", data.result.userID);
+                    window.localStorage.setItem("token", data.result.token);
+                    window.localStorage.setItem("role", data.result.role);
+                    
+                    // window.localStorage.UserData.userID = data.result.result.userID;
+                    // window.localStorage.UserData.role = data.result.result.role;
+                    //console.log(window.localStorage);
+                    navigate('/');
+                    props.showAlert("success", "Success", "Authorized User");
+                }
+                else if (data.result.hasOwnProperty("error")) {
+                    console.log("error");
+                    console.log("TOKEN: ", data.result.hasOwnProperty("token"));
+                    console.log("ERROR: ", data.result.hasOwnProperty("error"));
+                    props.showAlert("danger", "Authentication", "Failed");
+                }
 
-                // window.localStorage.UserData.userID = data.result.result.userID;
-                // window.localStorage.UserData.role = data.result.result.role;
-                //console.log(window.localStorage);
-                navigate('/');
-                props.showAlert("success", "Success", "Authorized User");
-            } if (response.ok === false) {
-                // Handle failed login (e.g., display error message)
-                //setIsLoading(false);
-                props.setAlert(null);
-                //props.showAlert("success", "Success", "Authorized User");
-                props.showAlert("danger", "Failed", "Authentication Error");
-            }
+                // if (data.result.result === "object") {
+                //     console.log(typeof data.result.result);
+                //     props.showAlert("success", "Success", "Authorized User");
+                // }
+                // if (data.result.result === "string") {
+                //     console.log(typeof data.result.result);
+                //     props.showAlert("danger", "Authentication", "Failed");
+                // }
+            } 
+            // if (response.ok === false) {
+            //     console.log(response.ok);
+            //     let data = await response.json();
+            //     console.log(data);
+            //     // Handle failed login (e.g., display error message)
+            //     //setIsLoading(false);
+            //     props.setAlert(null);
+            //     //props.showAlert("success", "Success", "Authorized User");
+            //     props.showAlert("danger", "Failed", "Authentication Error");
+            // }
         } catch (error) {
             console.error("Error: ", error);
         }
@@ -113,9 +138,6 @@ function Login(props) {
                     </div>
                 </div>
             </div>
-            <br />
-            <br />
-            <br />
             <br />
             <br />
             <br />

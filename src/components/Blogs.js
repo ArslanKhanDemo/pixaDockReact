@@ -65,11 +65,11 @@ function Blogs(props) {
                             <div>
                                 <div class="col">
                                     <div class="p-3 border">
-                                            <img src={`../uploads/${item.image}`} alt="Blog Image 1" className="img-thumbnail" />
-                                            <h5 className="card-title" key={index}>{item.heading}</h5>
-                                            <textarea name="" id="" cols="auto" rows="auto">{item.content}</textarea>
-                                            <a className="btn btn-primary">Add to Cart</a>
+                                        <img src={`../uploads/${item.image}`} alt="Blog Image 1" className="img-thumbnail" />
+                                        <h5 className="card-title" key={index}>{item.heading}</h5>
+                                        <textarea name="" id="" cols="auto" rows="auto">{item.content}</textarea>
                                     </div>
+                                    {/* <button className="btn btn-primary">Add to Cart</button> */}
                                 </div>
                             </div>
                         </div>

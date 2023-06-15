@@ -10,8 +10,11 @@ import Footer from './components/Footer';
 import Login from './components/Login';
 import PageNotFound from './components/PageNotFound';
 import SignUp from './components/SignUp';
+import UniqueCategory from './components/UniqueCategory';
+import Product from './components/Product';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
 
 //import MyComponent from './components/MyComponent';
 function App() {
@@ -39,7 +42,7 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar logout={logout} setLogout={setLogout} setNavigate={setNavigate} navigate={navigate}/>
-      <Alert alert={alert}/>
+      <Alert alert={alert} showAlert={showAlert}/>
       <Routes>
         <Route exact path="/" element={<Home showAlert={showAlert} setAlert={setAlert} />} />
         <Route exact path="/login" element={<Login showAlert={showAlert} setAlert={setAlert} setLogout={setLogout}/>} />
@@ -47,6 +50,12 @@ function App() {
         <Route exact path="/text" element={<TextArea showAlert={showAlert} />} />
         <Route exact path="/signup" element={<SignUp showAlert={showAlert} setAlert={setAlert} />} />
         <Route exact path="/blogs" element={<Blogs showAlert={showAlert} setAlert={setAlert} />} />
+        <Route exact path="/uniquecategory" element={<UniqueCategory showAlert={showAlert} setAlert={setAlert} />} />
+        <Route exact path="/product" element={<Product showAlert={showAlert} setAlert={setAlert} />} />
+        
+        
+        
+
         <Route path="*" element={<PageNotFound />} />
 
       </Routes>

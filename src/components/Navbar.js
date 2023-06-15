@@ -67,12 +67,13 @@ export default function Navbar(props) {
                     </div>
                 </div>
                <br />
-                <div className="container">
+                <div className="container-row">
                     {/* <form className="d-flex w-50" role="search">
                         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                         <button className="btn btn-outline-success" type="submit">Search</button>
                     </form> */}
                     {window.localStorage.token ? <button className="btn btn-outline-success" onClick={Logout} type="submit">Logout</button> : <></>}
+                    
                 </div>
             </nav>
             <br />
