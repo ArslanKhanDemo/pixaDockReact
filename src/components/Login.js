@@ -13,7 +13,6 @@ function Login(props) {
         event.preventDefault();
 
         if (isLoading) {
-
             props.showAlert("warning", "Loading", "Please wait...") && <div>Error: {error}</div>;;
         }
         try {
@@ -25,7 +24,7 @@ function Login(props) {
                 body: JSON.stringify({ email, password })
             });
 
-            if (response.ok === true || response.ok === true) {
+            if (response.ok === true) {
                 // Successful login, perform further actions (e.g., redirect, update state)
                 setIsLoading(false);
                 props.setAlert(null);
@@ -54,7 +53,7 @@ function Login(props) {
                     console.log("ERROR: ", data.result.hasOwnProperty("error"));
                     props.showAlert("danger", "Authentication", "Failed");
                 }
-
+                
                 // if (data.result.result === "object") {
                 //     console.log(typeof data.result.result);
                 //     props.showAlert("success", "Success", "Authorized User");
@@ -63,7 +62,10 @@ function Login(props) {
                 //     console.log(typeof data.result.result);
                 //     props.showAlert("danger", "Authentication", "Failed");
                 // }
-            } 
+            } else{
+                
+                props.showAlert("danger", "Error:", "User Not Found");
+            }
             // if (response.ok === false) {
             //     console.log(response.ok);
             //     let data = await response.json();

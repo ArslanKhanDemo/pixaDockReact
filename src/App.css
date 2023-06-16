@@ -54,6 +54,20 @@
 }
 
 .userName {
-  color: #59645d; /* Replace with your desired color code */
+  color: #000000; /* Replace with your desired color code */
   font-weight: bold;
+}
+
+.fixed-size {
+  width: 400px;
+  height: 300px;
+}
+.fixed-size-blog {
+  width: 400px;
+  height: 300px;
+}
+.fixed-size-for-div {
+
+margin: 0px;
+padding: 200px;
 }

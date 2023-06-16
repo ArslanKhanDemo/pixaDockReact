@@ -40,6 +40,11 @@ function Product(props) {
                     //props.showAlert("success", "Success", "The Product is Added To your Cart");
                 }
 
+            }else{
+                let data = await response.json()
+                console.log(data);
+                alert(`${data.result.result}`);
+                //props.showAlert("danger", "Warning", `${data.result.result}`);
             }
         } catch (error) {
             console.log("Error from addtoCart of Product Component: ", error);

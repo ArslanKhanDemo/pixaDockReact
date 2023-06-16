@@ -48,8 +48,8 @@ function UniqueCategory() {
     return (
         <>
             <div className="container-fluid">
-                <h2 className="display-2 text-center mb-5 mt-5">Category: {link}</h2>
-                <div className="container-fluid my-1">
+                <h2 className="display-2 text-center mb-5 mt-5">{link}</h2>
+                <div className="container-fluid my-1 fixed-size-for-div">
                     <div className="row row-cols-2 row-cols-lg-3 g-2 g-lg-3 grid-gutter-width: 0.5rem">
                         {Data.map((item, index) => (
                             <>

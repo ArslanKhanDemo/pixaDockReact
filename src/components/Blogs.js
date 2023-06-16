@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from "react-router-dom"
+
 //import myImage from '../uploads/';
 //import React, { useEffect, useState } from '';
 
@@ -43,7 +45,8 @@ function Blogs(props) {
                 <h1 className="display-1">Blogs</h1>
             </div>
 
-            <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 grid-gutter-width: 1.5rem">
+            <div className='fixed-size-for-div'>
+            <div class="row row-cols-1 row-cols-lg-3 g-2 g-lg-4 grid-gutter-width: 1.5rem">
                 {data.map((item, index) => (
                     <>
                         {/* <div className="container">
@@ -61,18 +64,28 @@ function Blogs(props) {
                             </div>
                         </div>
                         <br /> */}
-                        <div class="container " >
-                            <div>
-                                <div class="col">
-                                    {item.image}
-                                    <div class="p-3 border">
-                                        <img src={`../uploads/${item.image}`} alt="Blog Image 1" className="img-thumbnail" />
-                                        <h5 className="card-title" key={index}>{item.heading}</h5>
+                        <Link className="nav-link active" to={`/blog`} key={index} onClick={() => {
+                            if (window.localStorage.getItem("blog-image") || window.localStorage.getItem("blog-heading") || window.localStorage.getItem("blog-content")) {
+                                window.localStorage.removeItem("blog-image")
+                                window.localStorage.removeItem("blog-heading")
+                                window.localStorage.removeItem("blog-content")
+                            }
+                            window.localStorage.setItem("blog-image", item.image)
+                            window.localStorage.setItem("blog-heading", item.heading)
+                            window.localStorage.setItem("blog-content", item.content)
+                        }}>
+                            <div class="container " >
+                                <div>
+                                    <div class="col">
+                                        <div class="p-3 border">
+                                            <img src={`../uploads/${item.image}`} alt="Blog Image 1" className="fixed-size" />
+                                            <h5 className="card-title" key={index}>{item.heading}</h5>
+                                        </div>
+                                        {/* <button className="btn btn-primary">Add to Cart</button> */}
                                     </div>
-                                    {/* <button className="btn btn-primary">Add to Cart</button> */}
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                         {/* <div className="card">
                                 <div className="card-body">
                                     <img src={`../uploads/${item.image}`} className="card-img-top width-50px" alt="Image Alt Text"/>
@@ -83,6 +96,7 @@ function Blogs(props) {
 
                     </>
                 ))}
+            </div>
             </div>
         </>
     );
