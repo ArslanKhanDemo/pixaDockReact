@@ -36,7 +36,7 @@ function Blogs(props) {
     if (error) {
         return props.showAlert("danger", "Error", `${error}`) && <div>Error: {error}</div>;
     }
-
+    console.log(data[2].image);
     return (
         <>
             <div className="container fullscreen mb-5">
@@ -64,10 +64,10 @@ function Blogs(props) {
                         <div class="container " >
                             <div>
                                 <div class="col">
+                                    {item.image}
                                     <div class="p-3 border">
                                         <img src={`../uploads/${item.image}`} alt="Blog Image 1" className="img-thumbnail" />
                                         <h5 className="card-title" key={index}>{item.heading}</h5>
-                                        <textarea name="" id="" cols="auto" rows="auto">{item.content}</textarea>
                                     </div>
                                     {/* <button className="btn btn-primary">Add to Cart</button> */}
                                 </div>

@@ -1,5 +1,6 @@
 import React from 'react'
-
+import { Link, useNavigate } from "react-router-dom"
+//import Notification from "./Notification";
 function Product(props) {
     let item = {
         _id: window.localStorage.Product_ID,
@@ -11,6 +12,7 @@ function Product(props) {
 
 
 
+    let Navigate = useNavigate();
     let addToCart = async () => {
         try {
             let TOKEN = window.localStorage.getItem("token");
@@ -26,19 +28,22 @@ function Product(props) {
                 console.log(response);
                 let data = await response.json();
                 console.log(data.result.result);
-                if(typeof data.result.result  === "string"){
+                if (typeof data.result.result === "string") {
                     console.log(typeof data.result.result);
-                    props.showAlert("warning","Warning","The Product is already Added To your Cart");
+                    //props.showAlert("warning","Warning","The Product is already Added To your Cart");
+                    alert('ALERT: The Product is already Added To your Cart');
                 }
-                if(typeof data.result.result === "object"){
+                if (typeof data.result.result === "object") {
                     console.log(typeof data.result.result);
-                    props.showAlert("success","Success","The Product is Added To your Cart");
+                    alert('ALERT: The Product is Added To your Cart')
+                    Navigate('/');
+                    //props.showAlert("success", "Success", "The Product is Added To your Cart");
                 }
-                
+
             }
         } catch (error) {
-            console.log("Error from addtoCart of Product Component: ",error);
-            props.showAlert("danger","Warning",`${error.message}`);
+            console.log("Error from addtoCart of Product Component: ", error);
+            props.showAlert("danger", "Warning", `${error.message}`);
         }
     }
 
@@ -56,8 +61,8 @@ function Product(props) {
                         <img src={`../uploads/${item.image}`} alt="Product Image" className="img-fluid" />
                     </div>
                     <div className="col-md-6">
-                        <h2>{item.name}</h2>
-                        <p>{item.category}</p>
+                        <h2>Vector: {item.name}</h2>
+                        <p>Category: {item.category}</p>
                         <h3 >Price: <span className="d-inlin custom-color">$</span>{item.price}</h3>
                         <button className="btn btn-primary" onClick={addToCart}>Add to Cart</button>
                     </div>

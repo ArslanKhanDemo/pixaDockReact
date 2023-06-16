@@ -24,6 +24,7 @@ export default function Navbar(props) {
             window.localStorage.removeItem("userID");
             window.localStorage.removeItem("token");
             window.localStorage.removeItem("role");
+            window.localStorage.removeItem("userName");
             //console.log(window.localStorage);
             props.setLogout(false);
             Navigate("/login");
@@ -67,12 +68,13 @@ export default function Navbar(props) {
                     </div>
                 </div>
                <br />
-                <div className="container-row">
+                <div className="container">
                     {/* <form className="d-flex w-50" role="search">
                         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                         <button className="btn btn-outline-success" type="submit">Search</button>
                     </form> */}
-                    {window.localStorage.token ? <button className="btn btn-outline-success" onClick={Logout} type="submit">Logout</button> : <></>}
+                    {window.localStorage.userName ? <p className="fs-5 mb-1 userName">{window.localStorage.userName}</p> : <></>}
+                    {window.localStorage.token ? <><button className="btn btn-outline-success" onClick={Logout} type="submit">Logout</button></> : <></>}
                     
                 </div>
             </nav>

@@ -12,14 +12,15 @@ import PageNotFound from './components/PageNotFound';
 import SignUp from './components/SignUp';
 import UniqueCategory from './components/UniqueCategory';
 import Product from './components/Product';
+import Blog from './components/Blog';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 
 //import MyComponent from './components/MyComponent';
 function App() {
-
-
+  
+  
   const [alert, setAlert] = useState(null);
   const [logout,setLogout] = useState(false)
   const [navigate,setNavigate] = useState(false);
@@ -30,15 +31,17 @@ function App() {
       msg
     });
     setTimeout(() => {
-      setAlert(null);
+      setAlert(
+        null
+        );
       document.title = "React App"
     }, 3000)
   }
 
-
-
-
-
+   
+  
+  
+  
   return (
     <BrowserRouter>
       <Navbar logout={logout} setLogout={setLogout} setNavigate={setNavigate} navigate={navigate}/>
@@ -52,6 +55,7 @@ function App() {
         <Route exact path="/blogs" element={<Blogs showAlert={showAlert} setAlert={setAlert} />} />
         <Route exact path="/uniquecategory" element={<UniqueCategory showAlert={showAlert} setAlert={setAlert} />} />
         <Route exact path="/product" element={<Product showAlert={showAlert} setAlert={setAlert} />} />
+        <Route exact path="/blog" element={<Blog showAlert={showAlert} setAlert={setAlert} />} />
         
         
         

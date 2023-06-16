@@ -37,8 +37,9 @@ function Login(props) {
                     console.log("Login");
                     setData(data);
                     props.setLogout(true);
-                    window.localStorage.setItem("userID", data.result.userID);
                     window.localStorage.setItem("token", data.result.token);
+                    window.localStorage.setItem("userID", data.result.userID);
+                    window.localStorage.setItem("userName", data.result.userName);
                     window.localStorage.setItem("role", data.result.role);
                     
                     // window.localStorage.UserData.userID = data.result.result.userID;

@@ -52,3 +52,8 @@
 .custom-color {
   color: #00682b; /* Replace with your desired color code */
 }
+
+.userName {
+  color: #59645d; /* Replace with your desired color code */
+  font-weight: bold;
+}
