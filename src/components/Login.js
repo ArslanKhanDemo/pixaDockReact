@@ -29,11 +29,11 @@ function Login(props) {
                 setIsLoading(false);
                 props.setAlert(null);
                 let data = await response.json();
-                console.log(data);
+                //console.log(data);
                 if (data.result.hasOwnProperty("token")) {
-                    console.log("TOKEN: ", data.result.hasOwnProperty("token"));
-                    console.log("ERROR: ", data.result.hasOwnProperty("error"));
-                    console.log("Login");
+                    //console.log("TOKEN: ", data.result.hasOwnProperty("token"));
+                    //console.log("ERROR: ", data.result.hasOwnProperty("error"));
+                    //console.log("Login");
                     setData(data);
                     props.setLogout(true);
                     window.localStorage.setItem("token", data.result.token);
@@ -43,23 +43,23 @@ function Login(props) {
                     
                     // window.localStorage.UserData.userID = data.result.result.userID;
                     // window.localStorage.UserData.role = data.result.result.role;
-                    //console.log(window.localStorage);
+                    ////console.log(window.localStorage);
                     navigate('/');
                     props.showAlert("success", "Success", "Authorized User");
                 }
                 else if (data.result.hasOwnProperty("error")) {
-                    console.log("error");
-                    console.log("TOKEN: ", data.result.hasOwnProperty("token"));
-                    console.log("ERROR: ", data.result.hasOwnProperty("error"));
+                    //console.log("error");
+                    //console.log("TOKEN: ", data.result.hasOwnProperty("token"));
+                    //console.log("ERROR: ", data.result.hasOwnProperty("error"));
                     props.showAlert("danger", "Authentication", "Failed");
                 }
                 
                 // if (data.result.result === "object") {
-                //     console.log(typeof data.result.result);
+                //     //console.log(typeof data.result.result);
                 //     props.showAlert("success", "Success", "Authorized User");
                 // }
                 // if (data.result.result === "string") {
-                //     console.log(typeof data.result.result);
+                //     //console.log(typeof data.result.result);
                 //     props.showAlert("danger", "Authentication", "Failed");
                 // }
             } else{
@@ -67,9 +67,9 @@ function Login(props) {
                 props.showAlert("danger", "Error:", "User Not Found");
             }
             // if (response.ok === false) {
-            //     console.log(response.ok);
+            //     //console.log(response.ok);
             //     let data = await response.json();
-            //     console.log(data);
+            //     //console.log(data);
             //     // Handle failed login (e.g., display error message)
             //     //setIsLoading(false);
             //     props.setAlert(null);
@@ -82,7 +82,7 @@ function Login(props) {
 
     };
     const SignUp = () => {
-        console.log("SignUp CALLED");
+        //console.log("SignUp CALLED");
         navigate("/signup");
 
     }

@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types'
 import { Link, useNavigate } from "react-router-dom"
 import Alert from './Alert';
-//import { useNavigate } from "react-router-dom"
+import Cart from './Cart';
+
 
 
 
@@ -25,9 +26,29 @@ export default function Navbar(props) {
             window.localStorage.removeItem("token");
             window.localStorage.removeItem("role");
             window.localStorage.removeItem("userName");
-            //console.log(window.localStorage);
-            props.setLogout(false);
+            props.fun.setLogout(false);
             Navigate("/login");
+
+        } catch (error) {
+            console.log("catch error of LOGOUT fetch:", error);
+        }
+    }
+    let myCart = async () => {
+        try {
+            // const response = await fetch('http://localhost:5000/api/user/mycart', {
+            //     method: 'GET',
+            //     headers: {
+            //         Authorization: "Bearer " + TOKEN,
+            //         'Content-Type': 'application/json'
+            //     }
+            // });
+            // console.log(props.fun.checkOut);
+            // console.log("CheckOut Called");
+            // console.log(response);
+            // const data = await response.json();
+            // console.log(data.result.result);
+            // //props.setLogout(false);
+            Navigate("/cart");
 
         } catch (error) {
             console.log("catch error of LOGOUT fetch:", error);
@@ -67,7 +88,7 @@ export default function Navbar(props) {
 
                     </div>
                 </div>
-               <br />
+                <br />
                 <div className="container">
                     {/* <form className="d-flex w-50" role="search">
                         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
@@ -75,7 +96,8 @@ export default function Navbar(props) {
                     </form> */}
                     {window.localStorage.userName ? <p className="fs-5 mb-1 userName">{window.localStorage.userName}</p> : <></>}
                     {window.localStorage.token ? <><button className="btn btn-outline-success" onClick={Logout} type="submit">Logout</button></> : <></>}
-                    
+                    {window.localStorage.token ? <><button className="btn btn-outline-success" onClick={myCart} type="submit">Cart</button></> : <></>}
+
                 </div>
             </nav>
             <br />

@@ -8,22 +8,17 @@ function UniqueCategory() {
 
     useEffect(() => {
         async function unique() {
-            console.log("From unique window.localStorage.getItem('category'):", window.localStorage.getItem("category"));
+            //console.log("From unique window.localStorage.getItem('category'):", window.localStorage.getItem("category"));
             try {
-                const response = await fetch(`http://localhost:5000/api/category/${link}`, {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                });
+                const response = await fetch(`http://localhost:5000/api/category/${link}`);
 
                 if (response.ok) {
                     let data = await response.json();
-                    console.log("data veriable in unique:", data.result.result);
+                    //console.log("data veriable in unique:", data.result.result);
                     setData(data.result.result);
                 } else {
                     let data = await response.json();
-                    console.log("data veriable in unique else:", data);
+                    //console.log("data veriable in unique else:", data);
                 }
             } catch (error) {
                 console.error("Error: ", error);
@@ -55,18 +50,9 @@ function UniqueCategory() {
                             <>
 
                                 <div className="container" key={index}>
-                                    <div className="col" key={index}>
-                                        <div className="p-3 border" key={index}>
-                                            <Link className="nav-link active" to={`/product`} key={index} onClick={(e) => {
-                                                // window.localStorage.category ? window.localStorage.removeItem("category") : console.log("no Category in local");
-                                                // window.localStorage.setItem("category", item.category);
-                                                window.localStorage.setItem("Product_ID", item._id);
-                                                window.localStorage.setItem("Product_Category", item.category);
-                                                window.localStorage.setItem("Product_Name", item.name);
-                                                window.localStorage.setItem("Product_image", item.image);
-                                                window.localStorage.setItem("Product_price", item.price);
-                                                console.log("product link:",e);
-                                            }}>
+                                    <div className="col" >
+                                        <div className="p-3 border" >
+                                            <Link className="nav-link active" to={`/product/${item._id}`} >
                                                 <div className="container display-5">Name: {item.name}</div>
                                                 <div className="container display-6 mb-3">Category: {item.category}</div>
                                                 <img src={`../uploads/${item.image}`} alt="image" className="img-thumbnail" />

@@ -13,8 +13,9 @@ import SignUp from './components/SignUp';
 import UniqueCategory from './components/UniqueCategory';
 import Product from './components/Product';
 import Blog from './components/Blog';
-
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import MyComponent from './components/MyComponent';
+import Cart from './components/Cart';
 
 
 //import MyComponent from './components/MyComponent';
@@ -23,6 +24,7 @@ function App() {
   
   const [alert, setAlert] = useState(null);
   const [logout,setLogout] = useState(false)
+  const [myCart,setMyCart] = useState(false)
   const [navigate,setNavigate] = useState(false);
   let showAlert = (type, title, msg)=>{
     setAlert({
@@ -44,18 +46,19 @@ function App() {
   
   return (
     <BrowserRouter>
-      <Navbar logout={logout} setLogout={setLogout} setNavigate={setNavigate} navigate={navigate}/>
+      <Navbar logout={logout} fun={{setLogout,myCart,setMyCart}} setNavigate={setNavigate} navigate={navigate}/>
       <Alert alert={alert} showAlert={showAlert}/>
       <Routes>
         <Route exact path="/" element={<Home showAlert={showAlert} setAlert={setAlert} />} />
         <Route exact path="/login" element={<Login showAlert={showAlert} setAlert={setAlert} setLogout={setLogout}/>} />
-        <Route exact path="/about" element={<About showAlert={showAlert} setAlert={setAlert} />} />
+        <Route exact path="/about" element={<MyComponent showAlert={showAlert} setAlert={setAlert} />} />
         <Route exact path="/text" element={<TextArea showAlert={showAlert} />} />
         <Route exact path="/signup" element={<SignUp showAlert={showAlert} setAlert={setAlert} />} />
         <Route exact path="/blogs" element={<Blogs showAlert={showAlert} setAlert={setAlert} />} />
         <Route exact path="/uniquecategory" element={<UniqueCategory showAlert={showAlert} setAlert={setAlert} />} />
-        <Route exact path="/product" element={<Product showAlert={showAlert} setAlert={setAlert} />} />
-        <Route exact path="/blog" element={<Blog showAlert={showAlert} setAlert={setAlert} />} />
+        <Route exact path="/product/:id" element={<Product showAlert={showAlert} setAlert={setAlert} />} />
+        <Route exact path="/blog/:id" element={<Blog showAlert={showAlert} setAlert={setAlert} />} />
+        <Route exact path="/cart" element={<Cart showAlert={showAlert} setAlert={setAlert} />} />
         
         
         

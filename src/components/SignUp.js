@@ -33,7 +33,7 @@ function SignUp(props) {
 
         if (isLoading) {
 
-            props.showAlert("warning", "Loading", "Please wait...") && <div>Error: {error}</div>;;
+            //props.showAlert("warning", "Loading", "Please wait...") && <div>Error: {error}</div>;;
         }
         try {
             console.log("termAndConditions:",termAndConditions);

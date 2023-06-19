@@ -12,9 +12,10 @@ function TrendingVectors(props) {
                 const response = await fetch('http://localhost:5000/api/admin/catagories');
                 if (response.ok) {
                     const json = await response.json();
-                    console.log(json.result.result.length);
-                    setData(json.result.result); // Update data with the array value
-                    //console.log(`../../../../../Desktop/Projects/PixDock/src/uploads/${json.result.result[0].image}`)
+                    let Data = json.result.result;
+                    //console.log(Data.length);
+                    setData(Data); // Update data with the array value
+                    ////console.log(`../../../../../Desktop/Projects/PixDock/src/uploads/${json.result.result[0].image}`)
                 } else {
                     setError('Error retrieving data');
                 }
@@ -29,7 +30,7 @@ function TrendingVectors(props) {
     }, []);
 
     if (isLoading) {
-        return props.showAlert("warning", "Loading", "Please wait...") && <div>Error: {error}</div>;;
+        //props.showAlert("warning", "Loading", "Please wait...");
     }
     if (error) {
         return props.showAlert("danger", "Error", `${error}`) && <div>Error: {error}</div>;
@@ -48,7 +49,6 @@ function TrendingVectors(props) {
                                 <div className="col" key={index}>
                                     <div className="p-3 border" key={index}>
                                         <Link className="nav-link active" to={`/uniquecategory`} key={index} onClick={() => {
-                                            window.localStorage.category ? window.localStorage.removeItem("category") : console.log("no Category in local");
                                             window.localStorage.setItem("category", item.category);
                                         }}>
                                             <div className="container display-4">{item.name}</div>

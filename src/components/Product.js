@@ -1,18 +1,49 @@
-import React from 'react'
-import { Link, useNavigate } from "react-router-dom"
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from "react-router-dom"
 //import Notification from "./Notification";
 function Product(props) {
-    let item = {
-        _id: window.localStorage.Product_ID,
-        category: window.localStorage.Product_Category,
-        name: window.localStorage.Product_Name,
-        image: window.localStorage.Product_image,
-        price: window.localStorage.Product_price,
-    }
-
-
-
+    const [item, setItem] = useState({}); // Initialize as an empty Object
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const { id } = useParams();
     let Navigate = useNavigate();
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(`http://localhost:5000/api/product/${id}`);
+                if (response.ok) {
+                    const json = await response.json();
+                    let data = json.result.result
+                    console.log(data);
+                    setItem(data);
+                    setIsLoading(false);
+                }
+                else {
+                    setError(response.ok);
+                    props.setAlert("danger", "ALERT: ", `${error}`);
+                }
+            } catch (error) {
+                setError('Error retrieving data');
+            } finally {
+                setIsLoading(false);
+                props.setAlert(null);
+            }
+        };
+        fetchData();
+    }, []);
+    if (isLoading) {
+        return props.showAlert("warning", "Loading", "Please wait...");
+    }
+    // let item = {
+    //     _id: window.localStorage.Product_ID,
+    //     category: window.localStorage.Product_Category,
+    //     name: window.localStorage.Product_Name,
+    //     image: window.localStorage.Product_image,
+    //     price: window.localStorage.Product_price,
+    // }
+
+
+
     let addToCart = async () => {
         try {
             let TOKEN = window.localStorage.getItem("token");
@@ -40,7 +71,7 @@ function Product(props) {
                     //props.showAlert("success", "Success", "The Product is Added To your Cart");
                 }
 
-            }else{
+            } else {
                 let data = await response.json()
                 console.log(data);
                 alert(`${data.result.result}`);
