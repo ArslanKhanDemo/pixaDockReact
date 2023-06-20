@@ -5,7 +5,7 @@ function Cart(props) {
     const [items, setItems] = useState([]);
     const [price, setPrice] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState(null);
+    // const [error, setError] = useState(null);
 
 
 
@@ -41,18 +41,6 @@ function Cart(props) {
 
         fetchData();
     }, []);
-
-
-
-
-
-
-
-
-
-
-
-
 
     return (
         <>

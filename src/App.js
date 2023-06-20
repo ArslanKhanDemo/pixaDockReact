@@ -1,5 +1,10 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { React, useState } from 'react';
 import "./App.css"
+
+
+
+
 import Navbar from './components/Navbar';
 import TextArea from './components/TextArea';
 import About from './components/About';
@@ -13,9 +18,9 @@ import SignUp from './components/SignUp';
 import UniqueCategory from './components/UniqueCategory';
 import Product from './components/Product';
 import Blog from './components/Blog';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import MyComponent from './components/MyComponent';
 import Cart from './components/Cart';
+import UserProfile from './components/UserProfile';
 
 
 //import MyComponent from './components/MyComponent';
@@ -59,6 +64,7 @@ function App() {
         <Route exact path="/product/:id" element={<Product showAlert={showAlert} setAlert={setAlert} />} />
         <Route exact path="/blog/:id" element={<Blog showAlert={showAlert} setAlert={setAlert} />} />
         <Route exact path="/cart" element={<Cart showAlert={showAlert} setAlert={setAlert} />} />
+        <Route exact path="/userprofile" element={<UserProfile showAlert={showAlert} setAlert={setAlert} />} />
         
         
         

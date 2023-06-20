@@ -95,8 +95,8 @@ export default function Navbar(props) {
                         <button className="btn btn-outline-success" type="submit">Search</button>
                     </form> */}
                     {window.localStorage.userName ? <p className="fs-5 mb-1 userName">{window.localStorage.userName}</p> : <></>}
-                    {window.localStorage.token ? <><button className="btn btn-outline-success" onClick={Logout} type="submit">Logout</button></> : <></>}
                     {window.localStorage.token ? <><button className="btn btn-outline-success" onClick={myCart} type="submit">Cart</button></> : <></>}
+                    {window.localStorage.token ? <><button className="btn btn-outline-success" onClick={Logout} type="submit">Logout</button></> : <></>}
 
                 </div>
             </nav>
