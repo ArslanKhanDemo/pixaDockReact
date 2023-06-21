@@ -8,13 +8,14 @@ function Product(props) {
     const { id } = useParams();
     let Navigate = useNavigate();
     useEffect(() => {
+        console.log("id in Product:", id);
         const fetchData = async () => {
             try {
                 const response = await fetch(`http://localhost:5000/api/product/${id}`);
                 if (response.ok) {
                     const json = await response.json();
                     let data = json.result.result
-                    console.log(data);
+                    console.log("data: ",data);
                     setItem(data);
                     setIsLoading(false);
                 }
@@ -31,9 +32,9 @@ function Product(props) {
         };
         fetchData();
     }, []);
-    if (isLoading) {
-        return props.showAlert("warning", "Loading", "Please wait...");
-    }
+    // if (isLoading) {
+    //     return props.showAlert("warning", "Loading", "Please wait...");
+    // }
     // let item = {
     //     _id: window.localStorage.Product_ID,
     //     category: window.localStorage.Product_Category,

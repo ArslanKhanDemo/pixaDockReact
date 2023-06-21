@@ -1,24 +1,27 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from "react-router-dom"
+import { Link,useParams } from "react-router-dom"
 
 function UniqueCategory() {
 
     const [Data, setData] = useState([]);
-    const [link, setLink] = useState(window.localStorage.getItem("category"));
+    const [link, setLink] = useState();
+    const { id } = useParams();
+
 
     useEffect(() => {
+        //console.log(window.localStorage.getItem("category"));
         async function unique() {
             //console.log("From unique window.localStorage.getItem('category'):", window.localStorage.getItem("category"));
             try {
-                const response = await fetch(`http://localhost:5000/api/category/${link}`);
+                const response = await fetch(`http://localhost:5000/api/category/${window.localStorage.getItem("category")}`);
 
                 if (response.ok) {
                     let data = await response.json();
                     //console.log("data veriable in unique:", data.result.result);
                     setData(data.result.result);
+                    //console.log("data veriable in unique :", data);
                 } else {
                     let data = await response.json();
-                    //console.log("data veriable in unique else:", data);
                 }
             } catch (error) {
                 console.error("Error: ", error);
@@ -47,7 +50,7 @@ function UniqueCategory() {
                 <div className="container-fluid my-1 fixed-size-for-div">
                     <div className="row row-cols-2 row-cols-lg-3 g-2 g-lg-3 grid-gutter-width: 0.5rem">
                         {Data.map((item, index) => (
-                            <>
+                        
 
                                 <div className="container" key={index}>
                                     <div className="col" >
@@ -62,7 +65,7 @@ function UniqueCategory() {
                                     </div>
 
                                 </div>
-                            </>
+                            
                         ))}
                     </div>
                 </div>

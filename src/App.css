@@ -32,6 +32,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -40,7 +41,8 @@
 
 
 .custom-height-container {
-  height: 500px; /* Replace with your desired height */
+  height: 500px;
+  /* Replace with your desired height */
 }
 
 
@@ -50,11 +52,13 @@
 /* to add custome color code here*/
 
 .custom-color {
-  color: #00682b; /* Replace with your desired color code */
+  color: #00682b;
+  /* Replace with your desired color code */
 }
 
 .userName {
-  color: #000000; /* Replace with your desired color code */
+  color: #000000;
+  /* Replace with your desired color code */
   font-weight: bold;
 }
 
@@ -62,12 +66,22 @@
   width: 400px;
   height: 300px;
 }
+
 .fixed-size-blog {
   width: 400px;
   height: 300px;
 }
-.fixed-size-for-div {
 
-margin: 0px;
-padding: 200px;
+.fixed-size-for-div {
+  margin: 0px;
+  padding: 200px;
+}
+
+.style1 {
+  padding-left: 0.15rem
+}
+
+.style2 {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }

@@ -82,9 +82,12 @@ export default function Navbar(props) {
                                 <Link className=" nav-link active" to="/about">ABOUT</Link>
                             </li>
                             {!window.localStorage.token ? <li className="nav-item"><Link className=" nav-link active" to="/login">LOGIN</Link></li> : <></>}
+                            
+                        
                         </ul>
-
-                        {/* <button className="btn btn-outline-success" type="submit">Login</button> */}
+                        {/* <button className="btn btn-outline-success" onClick={()=>{
+                            Navigate("/about");
+                        }} type="button">Button</button> */}
 
                     </div>
                 </div>
@@ -97,7 +100,6 @@ export default function Navbar(props) {
                     {window.localStorage.userName ? <p className="fs-5 mb-1 userName">{window.localStorage.userName}</p> : <></>}
                     {window.localStorage.token ? <><button className="btn btn-outline-success" onClick={myCart} type="submit">Cart</button></> : <></>}
                     {window.localStorage.token ? <><button className="btn btn-outline-success" onClick={Logout} type="submit">Logout</button></> : <></>}
-
                 </div>
             </nav>
             <br />
