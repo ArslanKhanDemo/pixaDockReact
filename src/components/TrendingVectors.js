@@ -19,7 +19,7 @@ function TrendingVectors(props) {
                     unique = [...new Set(unique)];
                     console.log(unique);
                     //console.log(Data.length);
-                    //setData(Data); // Update data with the array value
+                    setData(Data); // Update data with the array value
                     ////console.log(`../../../../../Desktop/Projects/PixDock/src/uploads/${json.result.result[0].image}`)
                 } else {
                     setError('Error retrieving data');

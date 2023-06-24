@@ -9,6 +9,36 @@ function Login(props) {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [btnColor, setBtnColor] = useState("secondary");
+
+
+    // Get the password input field and the toggle button
+    const passwordInput = document.getElementById("password");
+    const toggleButton = document.getElementById("togglePassword");
+
+    // Add event listener to the toggle button
+    function fun() {
+        // Toggle the type attribute of the password input
+        try {
+
+            if (passwordInput === null) {
+                setBtnColor("danger");
+            } else {
+                setBtnColor("secondary")
+                const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+                passwordInput.setAttribute("type", type);
+                // Toggle the text on the toggle button
+                toggleButton.textContent = type === "password" ? "Show" : "Hide";
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+
+
+
+
     const handleLogin = async (event) => {
         event.preventDefault();
 
@@ -40,7 +70,7 @@ function Login(props) {
                     window.localStorage.setItem("userID", data.result.userID);
                     window.localStorage.setItem("userName", data.result.userName);
                     window.localStorage.setItem("role", data.result.role);
-                    
+
                     // window.localStorage.UserData.userID = data.result.result.userID;
                     // window.localStorage.UserData.role = data.result.result.role;
                     ////console.log(window.localStorage);
@@ -53,7 +83,7 @@ function Login(props) {
                     //console.log("ERROR: ", data.result.hasOwnProperty("error"));
                     props.showAlert("danger", "Authentication", "Failed");
                 }
-                
+
                 // if (data.result.result === "object") {
                 //     //console.log(typeof data.result.result);
                 //     props.showAlert("success", "Success", "Authorized User");
@@ -62,8 +92,8 @@ function Login(props) {
                 //     //console.log(typeof data.result.result);
                 //     props.showAlert("danger", "Authentication", "Failed");
                 // }
-            } else{
-                
+            } else {
+
                 props.showAlert("danger", "Error:", "User Not Found");
             }
             // if (response.ok === false) {
@@ -119,8 +149,8 @@ function Login(props) {
                                             onChange={(e) => setPassword(e.target.value)}
                                             required
                                         />
+                                        <button className={`btn btn-outline-${btnColor} mt-2 mb-2`} type="button" id="togglePassword" onClick={fun}>Show</button>
                                     </div>
-                                    <br />
                                     <div className="container">
                                         <div className="row">
                                             <div className='col'>

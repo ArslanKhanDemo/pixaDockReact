@@ -17,9 +17,31 @@ function SignUp(props) {
     const [data, setData] = useState(); // Initialize as an empty array
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [btnColor, setBtnColor] = useState("secondary");
 
 
+    // Get the password input field and the toggle button
+    const passwordInput = document.getElementById("password");
+    const toggleButton = document.getElementById("togglePassword");
 
+    // Add event listener to the toggle button
+    function fun() {
+        // Toggle the type attribute of the password input
+        try {
+
+            if (passwordInput === null) {
+                setBtnColor("danger");
+            } else {
+                setBtnColor("secondary")
+                const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+                passwordInput.setAttribute("type", type);
+                // Toggle the text on the toggle button
+                toggleButton.textContent = type === "password" ? "Show" : "Hide";
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
 
 
@@ -206,6 +228,7 @@ function SignUp(props) {
                                             required
                                         />
                                     </div>
+                                <button className={`btn btn-outline-${btnColor} mt-2 mb-2`} type="button" id="togglePassword" onClick={fun}>Show</button>
                                     <div className="form-group">
                                     <br />   
                                         <input

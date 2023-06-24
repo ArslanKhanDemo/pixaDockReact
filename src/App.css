@@ -85,3 +85,17 @@
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+.lightblue {
+  background-color: #c9d2e0;
+  /* Replace with your desired color code */
+  font-weight: bold;
+}
+
+.adminSideBar{
+  width:100px
+}
+
+.widthh{
+  width:auto
+}

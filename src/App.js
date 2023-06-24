@@ -7,7 +7,7 @@ import "./App.css"
 
 import Navbar from './components/Navbar';
 import TextArea from './components/TextArea';
-import About from './components/About';
+//import About from './components/About';
 import Home from './components/Home';
 import Alert from './components/Alert';
 import Blogs from './components/Blogs';
@@ -21,6 +21,7 @@ import Blog from './components/Blog';
 import MyComponent from './components/MyComponent';
 import Cart from './components/Cart';
 import UserProfile from './components/UserProfile';
+import AdminDashboard from './components/AdminDashboard';
 
 
 //import MyComponent from './components/MyComponent';
@@ -65,6 +66,7 @@ function App() {
         <Route exact path="/blog/:id" element={<Blog showAlert={showAlert} setAlert={setAlert} />} />
         <Route exact path="/cart" element={<Cart showAlert={showAlert} setAlert={setAlert} />} />
         <Route exact path="/userprofile" element={<UserProfile showAlert={showAlert} setAlert={setAlert} />} />
+        <Route exact path="/admindashboard" element={<AdminDashboard />} />
         
         
         

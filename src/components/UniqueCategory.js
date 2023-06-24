@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link,useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 
 function UniqueCategory() {
 
@@ -50,22 +50,22 @@ function UniqueCategory() {
                 <div className="container-fluid my-1 fixed-size-for-div">
                     <div className="row row-cols-2 row-cols-lg-3 g-2 g-lg-3 grid-gutter-width: 0.5rem">
                         {Data.map((item, index) => (
-                        
 
-                                <div className="container" key={index}>
-                                    <div className="col" >
-                                        <div className="p-3 border" >
-                                            <Link className="nav-link active" to={`/product/${item._id}`} >
-                                                <div className="container display-5">Name: {item.name}</div>
-                                                <div className="container display-6 mb-3">Category: {item.category}</div>
-                                                <img src={`../uploads/${item.image}`} alt="image" className="img-thumbnail" />
-                                            </Link>
-                                        </div>
-                                        {/* <button className="btn btn-primary">Add to Cart</button> */}
+
+                            <div className="container" key={index}>
+                                <div className="col" >
+                                    <div className="p-3 border" >
+                                        <Link className="nav-link active" to={`/product/${item._id}`} >
+                                            <div className="container display-5">Name: {item.name}</div>
+                                            <div className="container display-6 mb-3">Category: {item.category}</div>
+                                            <img src={`../uploads/${item.image}`} alt="image" className="img-thumbnail" />
+                                        </Link>
                                     </div>
-
+                                    {/* <button className="btn btn-primary">Add to Cart</button> */}
                                 </div>
-                            
+
+                            </div>
+
                         ))}
                     </div>
                 </div>
