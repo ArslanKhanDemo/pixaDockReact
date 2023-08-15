@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from "react-router-dom"
-
-//import myImage from '../uploads/';
-//import React, { useEffect, useState } from '';
+import { Link } from "react-router-dom";
 
 function Blogs(props) {
-
-    const [data, setData] = useState([]); // Initialize as an empty array
+    const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -16,9 +12,9 @@ function Blogs(props) {
                 const response = await fetch('http://localhost:5000/api/blog');
                 if (response.ok) {
                     const json = await response.json();
-                    //console.log(json.result.result.length);
-                    setData(json.result.result); // Update data with the array value
-                    ////console.log(`../../../../../Desktop/Projects/PixDock/src/uploads/${json.result.result[0].image}`)
+                    let respObject = json.result.result;
+                    setData(respObject);
+                    console.log("json.result.result:", json.result.result.length);
                 } else {
                     setError('Error retrieving data');
                 }
@@ -35,10 +31,7 @@ function Blogs(props) {
     if (isLoading) {
         props.showAlert("warning", "Loading", "Please wait...");
     }
-    if (error) {
-        props.showAlert("danger", "Error", `${error}`) && <div>Error: {error}</div>;
-    }
-    //console.log(data[2].image);
+
     return (
         <>
             <div className="container fullscreen mb-5">
@@ -48,7 +41,6 @@ function Blogs(props) {
             <div className='fixed-size-for-div'>
                 <div className="row row-cols-1 row-cols-lg-3 g-2 g-lg-4 grid-gutter-width: 1.5rem">
                     {data.map((item, index) => (
-
                         <div key={index}>
                             <Link className="nav-link active" to={`/blog/${item._id}`}  >
                                 <div className="container " >
@@ -63,25 +55,18 @@ function Blogs(props) {
                                 </div>
                             </Link>
                         </div>
-
                     ))}
                 </div>
             </div>
+
+            {error ? (
+                <>
+                    {props.showAlert("danger", "Error", `${error}`)}
+                    <div>Error: {error}</div>
+                </>
+            ) : null}
         </>
     );
-
-
-
-
-
-    // return (
-    //     <>
-    //         <div className="container fullscreen mt-5">
-    //             <h1 className="display-1 text-center">Blogs</h1>
-    //         </div>
-    //     </>
-    // )
 }
 
-
-export default Blogs
+export default Blogs;
